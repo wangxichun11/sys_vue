@@ -1,12 +1,11 @@
 <template>
   <div>
     <div class="audit_search">
-
       <span>地址：</span>
       <el-input v-model="addres" placeholder="请输入内容" clearable></el-input>
 
       <span class="span_button">
-        <el-button @click="handleSearch()" type="primary" icon="el-icon-search">搜索</el-button>
+        <el-button @click="dialogFormVisible=true" type="primary" icon="el-icon-search">添加</el-button>
       </span>
     </div>
     <el-table
@@ -21,10 +20,19 @@
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button type="text" size="small" @click="handleDel(scope.index)">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
+    <div>
+      <el-dialog title="添加信息" :visible.sync="dialogFormVisible">
+        <addmessage></addmessage>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="handleBtnclick(false)">取 消</el-button>
+          <el-button type="primary" @click="handleBtnclick(true)">确 定</el-button>
+        </div>
+      </el-dialog>
+    </div>
   </div>
 </template>
 <style lang="less" scoped>
@@ -42,12 +50,18 @@
 }
 </style>
 <script>
+import addmessage from "../components/form";
 export default {
   data() {
     return {
       addres: "",
-      table_list: []
+      table_list: [],
+      dialogFormVisible: false,
+      formLabelWidth: "120px"
     };
+  },
+  components: {
+    addmessage: addmessage
   },
   created() {
     this.$axios.get("/user").then(res => {
@@ -59,7 +73,6 @@ export default {
   computed: {
     tableData() {
       const addres = this.addres;
-
       if (addres) {
         // filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
         // 注意： filter() 不会对空数组进行检测。
@@ -87,7 +100,7 @@ export default {
     }
   },
   methods: {
-    tableRowClassName({rowIndex }) {
+    tableRowClassName({ rowIndex }) {
       if (rowIndex === 1) {
         return "warning-row";
       } else if (rowIndex === 3) {
@@ -96,7 +109,7 @@ export default {
       return "";
     },
     handleClick(row) {
-      this.$confirm(`你点击了第${row.id}行！！！`,`提示`, {
+      this.$confirm(`你点击了第${row.id}行！！！`, `提示`, {
         dangerouslyUseHTMLString: true,
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -115,7 +128,26 @@ export default {
           });
         });
     },
-    handleSearch() {}
+    handleDel(index) {
+      this.table_list.splice(index, 1);
+    },
+    handleadd() {
+      let row = {
+        id: this.$store.state.id,
+        name: this.$store.state.name,
+        addres: this.$store.state.addres,
+        date: this.$store.state.date
+      };
+      this.table_list.push(row);
+    },
+    handleBtnclick(Bo) {
+      if (Bo == true) {
+        alert(`你点击了确定`);
+        this.dialogFormVisible = false;
+      } else {
+        this.dialogFormVisible = false;
+      }
+    }
   }
 };
 </script>

@@ -1,7 +1,7 @@
 import Mock from 'mockjs' //引入
 // 使用mockjs模拟数据
 Mock.mock('/user',/post|get/i,{
-  'data|30': [
+  'data|10': [
     {
       'name': '@cname',
       'id|+1': 1,
