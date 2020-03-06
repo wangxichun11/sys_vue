@@ -2,7 +2,7 @@
   <div id="app">
     <el-container>
       <el-header>
-        <p>xxx管理系统</p>
+        <p>xxx审计日志管理系统</p>
       </el-header>
       <el-container>
         <el-aside width="200px">
@@ -22,8 +22,8 @@
                   </template>
                   <el-menu-item-group>
                     <el-menu-item index="1-1"><router-link to="/">首页</router-link></el-menu-item>
-                    <el-menu-item index="1-1"><router-link to="/about">关于</router-link></el-menu-item>
-                    <el-menu-item index="1-1"><router-link to="/audit">审计</router-link></el-menu-item>
+                    <el-menu-item index="1-1"><router-link to="/about">审计一</router-link></el-menu-item>
+                    <el-menu-item index="1-1"><router-link to="/audit">审计二</router-link></el-menu-item>
                     
                     <el-menu-item index="1-2">选项2</el-menu-item>
                   </el-menu-item-group>
@@ -92,6 +92,10 @@ html {
 }
 .el-header{
   border-bottom: 1px solid #000;
+  p{
+    font-size: 20px;
+    line-height: 60px;
+  }
 }
 .el-aside {
   color: #333;
@@ -112,4 +116,5 @@ html {
 .el-table .success-row {
   background: #f0f9eb;
 }
+
 </style>
