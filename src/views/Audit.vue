@@ -2,8 +2,7 @@
   <div>
     <div class="audit_search">
       <span>地址：</span>
-      <el-input v-model="addres" placeholder="请输入内容" clearable></el-input>
-
+      <el-input style="width:300px;" v-model="addres" placeholder="请输入内容" clearable></el-input>
       <span class="span_button">
         <el-button @click="dialogFormVisible=true" type="primary" icon="el-icon-search">添加</el-button>
       </span>
@@ -26,7 +25,24 @@
     </el-table>
     <div>
       <el-dialog title="添加信息" :visible.sync="dialogFormVisible">
-        <addmessage></addmessage>
+        <!-- <addmessage></addmessage> -->
+        <el-radio-group v-model="labelPosition" size="small">
+          <el-radio-button label="left">左对齐</el-radio-button>
+          <el-radio-button label="right">右对齐</el-radio-button>
+          <el-radio-button label="top">顶部对齐</el-radio-button>
+        </el-radio-group>
+        <div style="margin: 20px;"></div>
+        <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+          <el-form-item label="日期">
+            <el-input v-model="formLabelAlign.date"></el-input>
+          </el-form-item>
+          <el-form-item label="姓名">
+            <el-input v-model="formLabelAlign.name"></el-input>
+          </el-form-item>
+          <el-form-item label="地址">
+            <el-input v-model="formLabelAlign.addres"></el-input>
+          </el-form-item>
+        </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="handleBtnclick(false)">取 消</el-button>
           <el-button type="primary" @click="handleBtnclick(true)">确 定</el-button>
@@ -45,23 +61,26 @@
     float: right;
   }
 }
-.el-input {
-  width: 200px;
-}
+// .el-input {
+//   width: 200px;
+// }
 </style>
 <script>
-import addmessage from "../components/form";
+// import addmessage from "../components/form";
 export default {
   data() {
     return {
       addres: "",
       table_list: [],
       dialogFormVisible: false,
+      labelPosition: "right",
+      formLabelAlign: {
+        date: "",
+        name: "",
+        addres: ""
+      },
       formLabelWidth: "120px"
     };
-  },
-  components: {
-    addmessage: addmessage
   },
   created() {
     this.$axios.get("/user").then(res => {
@@ -131,18 +150,28 @@ export default {
     handleDel(index) {
       this.table_list.splice(index, 1);
     },
-    handleadd() {
-      let row = {
-        id: this.$store.state.id,
-        name: this.$store.state.name,
-        addres: this.$store.state.addres,
-        date: this.$store.state.date
-      };
-      this.table_list.push(row);
-    },
     handleBtnclick(Bo) {
       if (Bo == true) {
-        alert(`你点击了确定`);
+        let index = 0;
+        // 一次只改变一个数据
+        // this.$store.commit("addName", this.formLabelAlign.name);
+        // this.$store.commit("addId", ++index);
+        // this.$store.commit("addAddres", this.formLabelAlign.addres);
+        // this.$store.commit("addDate", this.formLabelAlign.date);
+        //一次性改变多个数据
+        this.$store.commit("addMessage", {
+          name : this.formLabelAlign.name,
+          id : ++index,
+          addres : this.formLabelAlign.addres,
+          date : this.formLabelAlign.date
+        });
+        let row = {
+          id: this.$store.state.id,
+          name: this.$store.state.name,
+          addres: this.$store.state.addres,
+          date: this.$store.state.date
+        };
+        this.table_list.push(row);
         this.dialogFormVisible = false;
       } else {
         this.dialogFormVisible = false;
