@@ -8,7 +8,8 @@ export default new Vuex.Store({
     id: "99",
     name: "王新",
     addres: "山西省 运城市",
-    date: "2020-09-12"
+    date: "2020-09-12",
+    text: null
   },
   mutations: {
     // commit 为同步操作 写法：this.$store.commit('mutations方法名',值)
@@ -31,17 +32,25 @@ export default new Vuex.Store({
       state.name = massage.name;
       state.addres = massage.addres;
       state.date = massage.date;
+    },
+    addtext(state, text) {
+      state.text = text;
+      localStorage.setItem('text', text);
     }
+
   },
   actions: {
     //dispatch 为异步操作 写法： this.$store.dispatch('action方法名',值)
-    
+
     // addId: ({ commit }) => commit('addId'),
     // addName: ({ commit }) => commit('addName'),
     // addAddres: ({ commit }) => commit('addAddres'),
     // addDate: ({ commit }) => commit('addDate'),
     addMessage: ({
       commit
-    }) => commit('addMessage')
+    }) => commit('addMessage'),
+    addtext: ({
+      commit
+    }) => commit('addtext'),
   }
 })
