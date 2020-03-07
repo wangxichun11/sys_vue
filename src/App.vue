@@ -14,6 +14,7 @@
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
+                @select="handleSelect"
               >
                 <el-submenu index="1">
                   <template slot="title">
@@ -21,16 +22,12 @@
                     <span>导航一</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="1-1"><router-link to="/">首页</router-link></el-menu-item>
-                    <el-menu-item index="1-1"><router-link to="/about">审计一</router-link></el-menu-item>
-                    <el-menu-item index="1-1"><router-link to="/audit">审计二</router-link></el-menu-item>
-                    
-                    <el-menu-item index="1-2">选项2</el-menu-item>
+                    <el-menu-item index="/">首页</el-menu-item>
+                    <el-menu-item index="/about">审计一</el-menu-item>
+                    <el-menu-item index="/audit">审计二</el-menu-item>
+
                   </el-menu-item-group>
-                  <el-submenu index="1-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
-                  </el-submenu>
+                  
                 </el-submenu>
               </el-menu>
             </el-col>
@@ -58,6 +55,9 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    handleSelect(key, keyPath) {
+      this.$router.push({ path: keyPath[1] });
     }
   }
 };
@@ -77,14 +77,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  
 }
 .el-container {
   height: 100%;
 }
-.el-header{
+.el-header {
   border-bottom: 1px solid #000;
-  p{
+  p {
     font-size: 20px;
     line-height: 60px;
   }
@@ -108,5 +107,4 @@ html {
 .el-table .success-row {
   background: #f0f9eb;
 }
-
 </style>
