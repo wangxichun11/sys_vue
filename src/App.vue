@@ -98,7 +98,7 @@ html {
   // background-color: #e9eef3;
   color: #333;
   height: 100%;
-  padding: 0;
+  // padding: 0;
 }
 .el-table .warning-row {
   background: oldlace;

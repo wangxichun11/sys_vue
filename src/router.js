@@ -11,8 +11,8 @@ Router.prototype.push = function push(location) {
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',     
+  // base: process.env.BASE_URL, 解决build之后路由的跳转
   routes: [{
       path: '/',
       name: 'home',
