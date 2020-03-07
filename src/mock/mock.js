@@ -4,7 +4,7 @@ Mock.mock('/user',/post|get/i,{
   'data|10': [
     {
       'name': '@cname',
-      'id|+1': 1,
+      'id|+1': '@guid()',
       'addres':'@county(true)',
       'date':'@date("yyyy-MM-dd")'
     }]
