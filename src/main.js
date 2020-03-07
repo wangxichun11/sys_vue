@@ -5,6 +5,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import axios from 'axios'
+import './directive/index'
 import './mock/mock'
 // 引入echarts
 import echarts from 'echarts'

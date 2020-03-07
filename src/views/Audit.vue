@@ -34,7 +34,14 @@
         <div style="margin: 20px;"></div>
         <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
           <el-form-item label="日期">
-            <el-input v-model="formLabelAlign.date"></el-input>
+            <!-- <el-date-picker v-model="formLabelAlign.date" type="date" placeholder="选择日期"></el-date-picker> -->
+            <el-date-picker
+              v-model="formLabelAlign.date"
+              type="date"
+              placeholder="选择日期"
+              format="yyyy-MM-dd"
+              value-format="yyyy-MM-dd"
+            ></el-date-picker>
           </el-form-item>
           <el-form-item label="姓名">
             <el-input v-model="formLabelAlign.name"></el-input>
@@ -151,6 +158,7 @@ export default {
       this.table_list.splice(index, 1);
     },
     handleBtnclick(Bo) {
+      console.log(this.formLabelAlign.date);
       if (Bo == true) {
         let index = 0;
         // 一次只改变一个数据
@@ -160,10 +168,10 @@ export default {
         // this.$store.commit("addDate", this.formLabelAlign.date);
         //一次性改变多个数据
         this.$store.commit("addMessage", {
-          name : this.formLabelAlign.name,
-          id : ++index,
-          addres : this.formLabelAlign.addres,
-          date : this.formLabelAlign.date
+          name: this.formLabelAlign.name,
+          id: ++index,
+          addres: this.formLabelAlign.addres,
+          date: this.formLabelAlign.date
         });
         let row = {
           id: this.$store.state.id,
