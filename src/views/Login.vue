@@ -60,7 +60,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("登陆成功!");
+          this.$message('登陆成功');
           this.$router.push({ path: "/index" });
         } else {
           console.log("error submit!!");
