@@ -9,7 +9,8 @@ export default new Vuex.Store({
     name: "王新",
     addres: "山西省 运城市",
     date: "2020-09-12",
-    text: null
+    text: null,
+    uesrName:''
   },
   mutations: {
     // commit 为同步操作 写法：this.$store.commit('mutations方法名',值)
@@ -36,6 +37,10 @@ export default new Vuex.Store({
     addtext(state, text) {
       state.text = text;
       localStorage.setItem('text', text);
+    },
+    addUsername(state, userName) {
+      state.text = userName;
+      sessionStorage.setItem('userName', userName);
     }
 
   },
@@ -52,5 +57,8 @@ export default new Vuex.Store({
     addtext: ({
       commit
     }) => commit('addtext'),
+    addUsername: ({
+      commit
+    }) => commit('addUsername'),
   }
 })

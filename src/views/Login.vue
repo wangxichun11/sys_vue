@@ -60,7 +60,9 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$message('登陆成功');
+          this.$store.commit("addUsername", this.ruleForm.name);
+          this.value_text = sessionStorage.getItem("userName");
+          this.$message("登陆成功");
           this.$router.push({ path: "/index" });
         } else {
           console.log("error submit!!");
@@ -88,7 +90,7 @@ export default {
   width: 500px;
   margin: 0 auto;
   border-radius: 5px;
-  &>h1{
+  & > h1 {
     text-align: center;
     padding: 20px 0px;
   }

@@ -47,6 +47,14 @@ export default {
       activeIndex: "1"
     };
   },
+  created() {
+    if (sessionStorage.userName) {
+      console.log(sessionStorage.userName);
+    }else{
+      this.$message("当前未登陆");
+      this.$router.push({ path: "/login" });
+    }
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
