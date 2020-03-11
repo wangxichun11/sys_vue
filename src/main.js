@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import router from './router/router'
 import store from './store/store'
 import axios from 'axios'
+import VueLazyload from 'vue-lazyload'
 import './directive/index'
 import './mock/mock'
 // 引入echarts
@@ -16,7 +17,11 @@ Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 Vue.use(ElementUI)
-
+// 使用VueLazyload并传入相应的配置
+Vue.use(VueLazyload, {
+  error: './assets/logo.png',
+  loading: './assets/logo.png', // 懒加载使用的图片
+})
 new Vue({
   router,
   store,

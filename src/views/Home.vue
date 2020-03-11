@@ -94,6 +94,9 @@ html {
     line-height: 60px;
   }
 }
+.is-active{
+  color: aqua;
+}
 .el-aside {
   color: #333;
   height: 100%;
