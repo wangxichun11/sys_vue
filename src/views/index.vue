@@ -14,30 +14,42 @@
         localStorage存储的值为：{{lStorage}}
         <list></list>
       </li>
+      <li>
+        <h1>prop 和 emit 父子组件传递</h1>
+        <el-input
+          v-model="valueProp"
+          @keyup.native.enter="BtnsubmitOne"
+          placeholder="请输入内容"
+        ></el-input>localStorage存储的值为：
+        <!-- {{lStorage}} -->
+        <child-list :valueText="valueText"></child-list>
+      </li>
     </ul>
   </div>
 </template>
 
 
 <script>
+import childList from "../components/childList";
 import list from "../components/list";
 export default {
   name: "home",
+  components: {
+    list,
+    childList
+  },
   data() {
     return {
       value_vuex: "",
       value_text: "",
       img_src: [],
-      lStorage: ""
+      lStorage: "",
+      valueProp:"",
+      valueText:""
     };
   },
-  components: {
-    list
-  },
   created() {
-
     this.lStorage = localStorage.getItem("text");
-
     this.$axios.get("api/bg/").then(res => {
       if (res.status == 200) {
         this.img_src = res.data.images;
@@ -48,7 +60,9 @@ export default {
     Btnsubmit() {
       this.$store.commit("addtext", this.value_vuex);
       this.lStorage = localStorage.getItem("text");
-      // this.value_text = localStorage.getItem("text");
+    },
+    BtnsubmitOne(){
+      this.valueText = this.valueProp;
     }
   }
 };
@@ -61,10 +75,13 @@ export default {
 .home {
   width: 100%;
   & > ul {
+    list-style: none;
     width: 100%;
+    overflow: hidden;
   }
   & > ul > li {
     width: 50%;
+    float: left;
   }
 }
 </style>
