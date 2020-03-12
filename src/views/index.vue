@@ -20,9 +20,10 @@
           v-model="valueProp"
           @keyup.native.enter="BtnsubmitOne"
           placeholder="请输入内容"
-        ></el-input>localStorage存储的值为：
-        <!-- {{lStorage}} -->
-        <child-list :valueText="valueText"></child-list>
+        ></el-input>
+        <div>emit像父组件传递值：{{emit_value}}</div>
+        
+        <child-list :valueText="valueText" @show-value="funval"></child-list>
       </li>
     </ul>
   </div>
@@ -36,7 +37,8 @@ export default {
   name: "home",
   components: {
     list,
-    childList
+    childList,
+    
   },
   data() {
     return {
@@ -45,7 +47,8 @@ export default {
       img_src: [],
       lStorage: "",
       valueProp:"",
-      valueText:""
+      valueText:"",
+      emit_value:""
     };
   },
   created() {
@@ -63,6 +66,9 @@ export default {
     },
     BtnsubmitOne(){
       this.valueText = this.valueProp;
+    },
+    funval(data){
+      this.emit_value = data.value;
     }
   }
 };

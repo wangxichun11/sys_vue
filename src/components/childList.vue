@@ -3,7 +3,7 @@
     <h1>存储数据</h1>
     <ul>
       <li @change="handleChange" v-for="(item,i) in value_Arr" v-show="i!==0" :key="i">
-        <el-checkbox :label="item">{{item}}</el-checkbox>
+        <el-radio v-model="radio" :label="item">{{item}}</el-radio>
       </li>
     </ul>
   </div>
@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-      value_Arr: []
+      value_Arr: [],
+      radio:1
     };
   },
   computed: {
@@ -30,8 +31,10 @@ export default {
   },
   methods: {
     handleChange(e) {
-      console.log(e.target.checked);
-      console.log(e.target.value)
+      var data = {
+        "value":e.target.value
+      }
+      this.$emit('show-value',data);
     }
   }
 };

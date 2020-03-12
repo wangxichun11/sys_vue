@@ -2,7 +2,7 @@
   <div class="list_todo" :data="listDate">
     <h1>存储数据</h1>
     <ul>
-      <li v-for="(item,i) in list" v-show="i!==0" :key="i"><el-checkbox>{{item}}</el-checkbox></li>
+      <li v-for="(item,i) in list" v-show="i!==0" :key="i"><el-radio v-model="radio" :label="item">{{item}}</el-radio></li>
     </ul>
   </div>
 </template>
@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       list: [],
+      radio:1
     };
   },
   computed: {

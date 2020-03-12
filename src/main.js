@@ -19,8 +19,8 @@ Vue.prototype.$axios = axios
 Vue.use(ElementUI)
 // 使用VueLazyload并传入相应的配置
 Vue.use(VueLazyload, {
-  error: './assets/logo.png',
-  loading: './assets/logo.png', // 懒加载使用的图片
+  error: '/src/slide-1.jpg',
+  loading: '/src/slide-1.jpg', // 懒加载使用的图片
 })
 new Vue({
   router,

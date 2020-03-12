@@ -49,7 +49,7 @@ export default {
   },
   created() {
     if (sessionStorage.userName) {
-      console.log(sessionStorage.userName);
+      return true;
     }else{
       this.$message("当前未登陆");
       this.$router.push({ path: "/login" });
