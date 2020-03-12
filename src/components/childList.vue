@@ -2,7 +2,9 @@
   <div class="list_todo" :data="Proplist">
     <h1>存储数据</h1>
     <ul>
-      <li v-for="(item,i) in value_Arr" v-show="i!==0" :key="i"><el-checkbox>{{item}}</el-checkbox></li>
+      <li @change="handleChange" v-for="(item,i) in value_Arr" v-show="i!==0" :key="i">
+        <el-checkbox :label="item">{{item}}</el-checkbox>
+      </li>
     </ul>
   </div>
 </template>
@@ -16,15 +18,20 @@ export default {
   },
   data() {
     return {
-      value_Arr: [],
+      value_Arr: []
     };
   },
   computed: {
     Proplist() {
       let value_Arr = this.value_Arr;
       value_Arr.push(this._props.valueText);
-      console.log(value_Arr);
       return value_Arr;
+    }
+  },
+  methods: {
+    handleChange(e) {
+      console.log(e.target.checked);
+      console.log(e.target.value)
     }
   }
 };
