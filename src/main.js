@@ -11,6 +11,8 @@ import './mock/mock'
 // 引入echarts
 import echarts from 'echarts'
 //一般都要加个$加到vue的原型链上，方便引用
+import com from './plugin/install'  // Loading
+Vue.use(com)
 
 
 Vue.config.productionTip = false

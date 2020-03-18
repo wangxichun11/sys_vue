@@ -25,6 +25,7 @@
                     <el-menu-item index="/">首页</el-menu-item>
                     <el-menu-item index="/about">审计一</el-menu-item>
                     <el-menu-item index="/audit">审计二</el-menu-item>
+                    <el-menu-item index="/pluginunit">插件</el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
               </el-menu>
