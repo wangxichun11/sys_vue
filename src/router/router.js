@@ -18,7 +18,7 @@ export default new Router({
     path: '/',
     name: 'home',
     component: Home,
-    redirect: '/index', //只想index页
+    redirect: '/index', //指向index页
     children: [{
         path: '/index',
         name: 'index',
