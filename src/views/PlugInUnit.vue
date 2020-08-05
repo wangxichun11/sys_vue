@@ -73,6 +73,7 @@ export default {
   methods: {
     toggle() {
       // this.watchSelect = !this.watchSelect;
+      this.prealarmStatus = "";
       console.log(this.prealarmStatus);
       // let heightSize = this.heightSize;
       // if (this.show == "true") {

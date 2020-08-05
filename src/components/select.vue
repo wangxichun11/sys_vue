@@ -15,7 +15,7 @@ export default {
     type: String, //type对应的值    true
     name: String, //select的名字比如 “合同类型:”  true
     watchSelect: Boolean, //监听select 清空 如果多个组件的话 可以统一清空
-    selected: String, //判断select 是否默认选中 true为选中 false 为不选中 不写为false
+    selected: String, //判断select 是否默认选中 true为选中 false 为不选中 不写为false true
     selectArr: Array, //根据数组展示指定字段 key 必须一致 true
     disabled: Boolean, //true
   },
@@ -88,9 +88,7 @@ export default {
         this.$emit("input", this.svalue);
       }
     },
-    value: function(val, oldVal) {
-      debugger;
-      console.log(oldVal);
+    value: function(val) {
       if (!val) {
         this.svalue = "";
       }else{
