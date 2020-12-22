@@ -1,7 +1,7 @@
 module.exports = {
     //...
     // publicPath: process.env.NODE_ENV === "production" ? "/production-sub-path/" : "/",
-    publicPath:process.env.NODE_ENV=="production"?"./":"/", 
+    publicPath: process.env.NODE_ENV == "production" ? "./" : "/",
     // baseUrl:'./'
     //...
     // 所有 webpack-dev-server 的选项都支持。
