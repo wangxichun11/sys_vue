@@ -29,6 +29,9 @@
       </transition>
     </div>-->
     <el-tree :props="props" :load="loadNode" lazy show-checkbox></el-tree>
+    <div class="box">
+      <p v-bind:style="{left:Num+'px',top:0}">弹幕</p>
+    </div>
   </div>
 </template>
 <style lang="less" scoped>
@@ -42,6 +45,16 @@
   padding: 40px 20px;
   box-sizing: border-box;
   margin-right: 20px;
+}
+.box {
+  width: 100%;
+  height: 300px;
+  background-color: aqua;
+  position: relative;
+  overflow: hidden;
+  & > p {
+    position: absolute;
+  }
 }
 </style>
 
@@ -59,18 +72,26 @@ export default {
       // selectArr: [],
       disabled: false,
       selected: "PROCESSED",
+      Num: 0,
       props: {
         label: "name",
         children: "zones",
-        isLeaf: "leaf",
-      },
+        isLeaf: "leaf"
+      }
     };
   },
   components: {
-    onSelect,
+    onSelect
   },
-  created() {},
+  created() {
+    this.move();
+  },
   methods: {
+    move() {
+      setInterval(() => {
+        this.Num += 10;
+      }, 500);
+    },
     toggle() {
       // this.watchSelect = !this.watchSelect;
       this.prealarmStatus = "";
@@ -102,18 +123,17 @@ export default {
       const data = [
         {
           name: "leaf",
-          zones:true,
-          leaf: true,
+          zones: true,
+          leaf: true
         },
         {
-          name: "zone",
-          
-        },
+          name: "zone"
+        }
       ];
 
       resolve(data);
       // }, 500);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -135,15 +135,14 @@
 }
 </style>
 <script>
-import echarts from "echarts" 
+import echarts from "echarts";
 import "echarts-liquidfill/src/liquidFill.js"; //在这里引入
 export default {
   name: "about",
   data() {
     return {};
   },
-  created() {
-  },
+  created() {},
   mounted() {
     this.drawChart();
     this.echartsOne();
@@ -372,7 +371,7 @@ export default {
           {
             type: "liquidFill",
             radius: "80%",
-            data: [0.12, 0.12],
+            data: [0.5, 0.5, 0.5, 0.5],
             backgroundStyle: {
               borderWidth: 5,
               borderColor: "rgb(255,0,255,0.9)",
@@ -380,7 +379,7 @@ export default {
             },
             label: {
               normal: {
-                formatter: (0.12 * 100).toFixed(2) + "%",
+                formatter: (0.5 * 100).toFixed(2) + "%",
                 textStyle: {
                   fontSize: 50
                 }
