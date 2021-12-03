@@ -18,7 +18,7 @@
 
 <script>
 import echarts from "echarts";
-import "echarts-liquidfill/src/liquidFill.js";
+// import "echarts-liquidfill/src/liquidFill.js";
 export default {
   name: "historgram",
   data() {
