@@ -29,6 +29,23 @@
                   </el-menu-item-group>
                 </el-submenu>
               </el-menu>
+               <el-menu
+                default-active="2"
+                class="el-menu-vertical-demo"
+                @open="handleOpen"
+                @close="handleClose"
+                @select="handleSelect"
+              >
+                <el-submenu index="1">
+                  <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span>Echarts</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="/histogram">柱状图</el-menu-item>
+                  </el-menu-item-group>
+                </el-submenu>
+              </el-menu>
             </el-col>
           </el-row>
         </el-aside>
