@@ -8,9 +8,9 @@
         <el-aside width="200px">
           <el-row class="tac">
             <el-col :span="24">
-              <h1 style="text-align: center;">菜单</h1>
+              <h1 style="text-align: center">菜单</h1>
               <el-menu
-                default-active="2"
+                default-active="1"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
@@ -22,12 +22,13 @@
                     <span>导航一</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="/">首页</el-menu-item>
+                    <el-menu-item index="/Echarts">首页</el-menu-item>
                     <el-menu-item index="/about">审计一</el-menu-item>
                     <el-menu-item index="/audit">审计二</el-menu-item>
                     <el-menu-item index="/pluginunit">插件</el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
+                <el-menu-item index="/Echarts">Echarts</el-menu-item>
               </el-menu>
                <el-menu
                 default-active="2"
@@ -62,13 +63,13 @@
 export default {
   data() {
     return {
-      activeIndex: "1"
+      activeIndex: "1",
     };
   },
   created() {
     if (sessionStorage.userName) {
       return true;
-    }else{
+    } else {
       this.$message("当前未登陆");
       this.$router.push({ path: "/login" });
     }
@@ -81,9 +82,9 @@ export default {
       console.log(key, keyPath);
     },
     handleSelect(key, keyPath) {
-      this.$router.push({ path: keyPath[1] });
-    }
-  }
+      this.$router.push({ path: keyPath[(keyPath.length)-1] });
+    },
+  },
 };
 </script>
 <style lang="less">
@@ -112,7 +113,7 @@ html {
     line-height: 60px;
   }
 }
-.is-active{
+.is-active {
   color: aqua;
 }
 .el-aside {
