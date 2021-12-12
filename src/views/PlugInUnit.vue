@@ -19,16 +19,8 @@
         :selected="selected"
       ></on-select>
     </el-form>
-    <!-- <div style="display: flex; margin-top: 20px; height: 100px;">
-      <transition name="el-zoom-in-top">
-        <div
-          v-show="show"
-          v-bind:style="{ height: heightSize + 'px',display:'block'}"
-          class="transition-box"
-        >.el-zoom-in-top</div>
-      </transition>
-    </div>-->
-    <el-tree :props="props" :load="loadNode" lazy show-checkbox></el-tree>
+    <lunbo> </lunbo>
+    <!-- <el-tree :props="props" :load="loadNode" lazy show-checkbox></el-tree> -->
   </div>
 </template>
 <style lang="less" scoped>
@@ -47,6 +39,7 @@
 
 <script>
 import onSelect from "../components/select";
+import lunbo from "../components/lunbo.vue";
 export default {
   data() {
     return {
@@ -68,29 +61,13 @@ export default {
   },
   components: {
     onSelect,
+    lunbo,
   },
   created() {},
   methods: {
     toggle() {
-      // this.watchSelect = !this.watchSelect;
       this.prealarmStatus = "";
       console.log(this.prealarmStatus);
-      // let heightSize = this.heightSize;
-      // if (this.show == "true") {
-      //   let timer = setInterval(() => {
-      //     heightSize = heightSize + 5;
-      //     this.heightSize = heightSize;
-      //     heightSize == 500 ? clearInterval(timer) : "";
-      //   }, 10);
-      //   this.show = "false";
-      // } else {
-      //   let timer = setInterval(() => {
-      //     heightSize = heightSize - 5;
-      //     this.heightSize = heightSize;
-      //     heightSize == 200 ? clearInterval(timer) : "";
-      //   }, 10);
-      //   this.show = "true";
-      // }
     },
     loadNode(node, resolve) {
       if (node.level === 0) {
@@ -102,17 +79,15 @@ export default {
       const data = [
         {
           name: "leaf",
-          zones:true,
+          zones: true,
           leaf: true,
         },
         {
           name: "zone",
-          
         },
       ];
 
       resolve(data);
-      // }, 500);
     },
   },
 };

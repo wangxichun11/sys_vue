@@ -5,7 +5,6 @@
         ><div class="grid-content bg-purple">
           <div class="echarts-histogram" id="echarts-histogram"></div></div
       ></el-col>
-
     </el-row>
     <el-row>
       <el-col :span="10"
@@ -53,6 +52,13 @@ export default {
             data: [120, 200, 150, 80, 70, 110, 130],
             type: "bar",
             showBackground: true,
+            itemStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: "#83bff6" },
+                { offset: 0.5, color: "#188df0" },
+                { offset: 1, color: "#188df0" },
+              ]),
+            },
             backgroundStyle: {
               color: "rgba(180, 180, 180, 0.2)",
             },

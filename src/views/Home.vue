@@ -22,13 +22,13 @@
                     <span>导航一</span>
                   </template>
                   <el-menu-item-group>
-                    <el-menu-item index="/Echarts">首页</el-menu-item>
+                    <el-menu-item index="/">首页</el-menu-item>
                     <el-menu-item index="/about">审计一</el-menu-item>
                     <el-menu-item index="/audit">审计二</el-menu-item>
                     <el-menu-item index="/pluginunit">插件</el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="/Echarts">Echarts</el-menu-item>
+                
               </el-menu>
                <el-menu
                 default-active="2"
@@ -39,13 +39,13 @@
               >
                 <el-submenu index="1">
                   <template slot="title">
-                    <i class="el-icon-location"></i>
                     <span>Echarts</span>
                   </template>
                   <el-menu-item-group>
                     <el-menu-item index="/histogram">柱状图</el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
+                <el-menu-item index="/lunbotu">Echarts</el-menu-item>
               </el-menu>
             </el-col>
           </el-row>

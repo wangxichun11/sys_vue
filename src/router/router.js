@@ -61,17 +61,8 @@ const routes = [
         return import( /* webpackChunkName: "pluginunit" */ '../views/PlugInUnit.vue')
       }
     },
-    {
-      path: '/Echarts',
-      name: 'Echarts',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: function () {
-        return import( /* webpackChunkName: "echarts" */ '../views/echarts')
-      }
-    }
-  ,{
+
+  {
     path: '/histogram',
     name: 'Histogram',
     // route level code-splitting
@@ -79,6 +70,16 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: function () {
       return import( /* webpackChunkName: "about" */ '../views/Echarts/histogram.vue')
+    }
+  },
+  {
+    path: '/lunbotu',
+    name: 'Lunbotu',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: function () {
+      return import( /* webpackChunkName: "about" */ '../views/lunbotu.vue')
     }
   }
   
